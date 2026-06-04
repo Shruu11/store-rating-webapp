@@ -176,34 +176,34 @@ export const createStore = async (req, res) => {
     });
   }
 };
-export const getStores = async (req, res) => {
-  try {
+// export const getStores = async (req, res) => {
+//   try {
 
-    const stores = await pool.query(`
-      SELECT
-        stores.id,
-        stores.name,
-        stores.email,
-        stores.address,
-        users.name AS owner_name
-      FROM stores
-      LEFT JOIN users
-      ON stores.owner_id = users.id
-      ORDER BY stores.id ASC
-    `);
+//     const stores = await pool.query(`
+//       SELECT
+//         stores.id,
+//         stores.name,
+//         stores.email,
+//         stores.address,
+//         users.name AS owner_name
+//       FROM stores
+//       LEFT JOIN users
+//       ON stores.owner_id = users.id
+//       ORDER BY stores.id ASC
+//     `);
 
-    res.status(200).json({
-      stores: stores.rows,
-    });
+//     res.status(200).json({
+//       stores: stores.rows,
+//     });
 
-  } catch (error) {
-    console.log(error);
+//   } catch (error) {
+//     console.log(error);
 
-    res.status(500).json({
-      message: "Server Error",
-    });
-  }
-};
+//     res.status(500).json({
+//       message: "Server Error",
+//     });
+//   }
+// };
 
 export const getStores = async (req, res) => {
   try {
