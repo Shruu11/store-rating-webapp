@@ -1,0 +1,72 @@
+.create-store-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.create-store-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--text-color);
+}
+
+.create-store-form {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.create-store-form input {
+  flex: 1;
+  min-width: 220px;
+
+  padding: 12px;
+
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+
+  background: var(--input-bg);
+  color: var(--text-color);
+
+  font-size: 16px;
+}
+
+.create-store-form input::placeholder {
+  color: gray;
+}
+
+.create-store-form button {
+  padding: 12px 20px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #2563eb;
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+.create-store-form button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+
+  .create-store-form {
+    flex-direction: column;
+  }
+
+  .create-store-form input,
+  .create-store-form button {
+    width: 100%;
+  }
+
+}
