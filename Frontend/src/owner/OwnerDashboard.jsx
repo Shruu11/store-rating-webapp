@@ -55,11 +55,8 @@ console.log("Dashboard:", response.data);
 
   return (
     <div>
-      <h1>Store Owner Dashboard</h1>
-
-      <h2>Store Summary</h2>
-
       <Navbar/>
+      <h2 className="text-xl font-bold m[-5]">Summary table</h2>
 
       <table border="1">
         <thead>
@@ -81,7 +78,7 @@ console.log("Dashboard:", response.data);
         </tbody>
       </table>
 
-      <h2>Users Ratings</h2>
+      <h2 className="text-xl font-bold m[-5]">Users Ratings:</h2>
 
       <table border="1">
         <thead>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "../pages/style/login.css";
+import "../pages/style/auth.css";
 import api from "../services/api";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -51,40 +51,55 @@ const handleSubmit = async (e) => {
 };
 
   return (
-    <div className="login-container">
-      <form className="login-form"  onSubmit={handleSubmit}>
-        <h2>Login</h2>
+  <section className="auth-container">
+    <div className="auth-card">
+      <h1 className="auth-title">
+        Welcome Back
+      </h1>
 
-      <input
-  type="email"
-  name="email"
-  placeholder="Enter Email"
-  value={formData.email}
-  onChange={handleChange}
-/>
-        
+      <p className="auth-subtitle">
+        Sign in with your email and password.
+      </p>
 
-        <input
-  type="password"
-  name="password"
-  placeholder="Enter Password"
-  value={formData.password}
-  onChange={handleChange}
-/>
+      <form onSubmit={handleSubmit}>
+        <div className="input-group">
+          <label>Email</label>
 
-        <button type="submit">
+          <input
+            type="email"
+            name="email"
+            placeholder="you@example.com"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="input-group">
+          <label>Password</label>
+
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter Password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+        </div>
+
+        <button type="submit" className="auth-btn">
           Login
         </button>
-
-        <p>
-          Don't have an account?{" "}
-          <Link to="/register">
-            Register
-          </Link>
-        </p>
       </form>
+
+      <p className="auth-footer">
+        Don't have an account?{" "}
+        <Link to="/register">
+          Register
+        </Link>
+      </p>
     </div>
-  );
+  </section>
+);
 }
 
 export default Login;

@@ -257,3 +257,62 @@ export const getStores = async (req, res) => {
     });
   }
 };
+
+export const getUserDetails = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const user = await pool.query(
+      `
+      SELECT
+        id,
+        name,
+        email,
+        address,
+        role
+      FROM users
+      WHERE id = $1
+      `,
+      [id]
+    );
+
+    if (user.rows.length === 0) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
+
+    let userData = user.rows[0];
+
+    if (userData.role === "STORE_OWNER") {
+
+      const rating = await pool.query(
+        `
+        SELECT
+        ROUND(AVG(ratings.rating),2)
+        AS average_rating
+
+        FROM stores
+
+        LEFT JOIN ratings
+        ON stores.id = ratings.store_id
+
+        WHERE stores.owner_id = $1
+        `,
+        [id]
+      );
+
+      userData.averageRating =
+        rating.rows[0].average_rating || 0;
+    }
+
+    res.status(200).json(userData);
+
+  } catch (error) {
+    console.log(error);
+
+    res.status(500).json({
+      message: "Server Error",
+    });
+  }
+};

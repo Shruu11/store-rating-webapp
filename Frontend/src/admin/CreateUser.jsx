@@ -1,14 +1,15 @@
 import { useState } from "react";
+import Navbar from "../components/Navbar";
 import api from "../services/api";
-import Navbar from "../components/Navbar"
+import toast from "react-hot-toast";
 import "./style/createstore.css"
-
-function CreateStore() {
+function CreateUser() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    password: "",
     address: "",
-    owner_id: "",
+    role: "USER",
   });
 
   const handleChange = (e) => {
@@ -24,8 +25,8 @@ function CreateStore() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await api.post(
-        "/admin/stores",
+      await api.post(
+        "/admin/users",
         formData,
         {
           headers: {
@@ -34,35 +35,27 @@ function CreateStore() {
         }
       );
 
-      alert(response.data.message);
+      toast.success("User Created Successfully");
 
       setFormData({
         name: "",
         email: "",
+        password: "",
         address: "",
-        owner_id: "",
+        role: "USER",
       });
-
     } catch (error) {
-      console.log(error.response?.data);
-
-      alert(
-        error.response?.data?.message ||
-        "Failed to create store"
-      );
+      toast.error("Failed to Create User");
     }
   };
-
   return (
-  
-    
   <div>
     <Navbar />
 
     <div className="store-page">
 
       <h1 className="store-title">
-        Create Store
+        Create User
       </h1>
 
       <div className="store-card">
@@ -71,10 +64,11 @@ function CreateStore() {
           className="store-form"
           onSubmit={handleSubmit}
         >
+
           <input
             type="text"
             name="name"
-            placeholder="Store Name"
+            placeholder="Full Name"
             value={formData.name}
             onChange={handleChange}
           />
@@ -82,41 +76,61 @@ function CreateStore() {
           <input
             type="email"
             name="email"
-            placeholder="Store Email"
+            placeholder="Email"
             value={formData.email}
+            onChange={handleChange}
+          />
+
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
             onChange={handleChange}
           />
 
           <input
             type="text"
             name="address"
-            placeholder="Store Address"
+            placeholder="Address"
             value={formData.address}
             onChange={handleChange}
           />
 
-          <input
-            type="number"
-            name="owner_id"
-            placeholder="Store Owner ID"
-            value={formData.owner_id}
+          <select
+            name="role"
+            value={formData.role}
             onChange={handleChange}
-          />
+          >
+            <option value="USER">
+              USER
+            </option>
+
+            <option value="STORE_OWNER">
+              STORE OWNER
+            </option>
+
+            <option value="ADMIN">
+              ADMIN
+            </option>
+          </select>
 
           <button
             type="submit"
             className="store-btn"
           >
-            Create Store
+            Create User
           </button>
+
         </form>
 
       </div>
 
     </div>
+
   </div>
 );
 }
 
 
-export default CreateStore;
+export default CreateUser;

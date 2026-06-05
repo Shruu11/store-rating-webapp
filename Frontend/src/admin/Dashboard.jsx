@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import Navbar from "../components/Navbar";
+import "./style/dashboard.css"
 function Dashboard() {
   const [stats, setStats] = useState({
     totalUsers: 0,
@@ -31,18 +32,38 @@ function Dashboard() {
     }
   };
 
-  return (
-    <div>
-      <Navbar/>
-      <h1>Admin Dashboard</h1>
+    return (
+  <div>
+    <Navbar />
 
-      <h2>Total Users: {stats.totalUsers}</h2>
+    <div className="dashboard-container">
 
-      <h2>Total Stores: {stats.totalStores}</h2>
+      <h1 className="dashboard-title">
+        Admin Dashboard
+      </h1>
 
-      <h2>Total Ratings: {stats.totalRatings}</h2>
+      <div className="dashboard-cards">
+
+        <div className="dashboard-card">
+          <h3>Total Users</h3>
+          <p>{stats.totalUsers}</p>
+        </div>
+
+        <div className="dashboard-card">
+          <h3>Total Stores</h3>
+          <p>{stats.totalStores}</p>
+        </div>
+
+        <div className="dashboard-card">
+          <h3>Total Ratings</h3>
+          <p>{stats.totalRatings}</p>
+        </div>
+
+      </div>
+
     </div>
-  );
+  </div>
+);
 }
 
 export default Dashboard;

@@ -47,6 +47,9 @@ function Navbar() {
             <Link to="/admin/create-store">
               Create Store
             </Link>
+            <Link to="/admin/create-user">
+             Create User
+           </Link>
           </>
         )}
 
@@ -79,6 +82,12 @@ function Navbar() {
         >
           Logout
         </button>
+      <Link
+  to="/update-password"
+  className="nav-btn"
+>
+  Update Password
+</Link>
       </div>
     </nav>
   );

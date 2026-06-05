@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
+import Navbar from "../components/Navbar"
 
 function UserDashboard() {
   const [stores, setStores] = useState([]);
@@ -105,7 +106,11 @@ function UserDashboard() {
 
   return (
     <div>
-      <h1>User Dashboard</h1>
+      <Navbar/>
+      <div>
+    <h1 className="text-2xl">
+  Store Ratings
+</h1>
 
       <input
         type="text"
@@ -151,13 +156,13 @@ function UserDashboard() {
 
               <td>
                <>
-  <button
+  <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg"
     onClick={() => submitRating(store.id)}
   >
     Submit
   </button>
 
-  <button
+  <button  className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 m-2 rounded-lg"
     onClick={() => updateRating(store.id)}
   >
     Update
@@ -168,6 +173,7 @@ function UserDashboard() {
           ))}
         </tbody>
       </table>
+    </div>
     </div>
   );
 }

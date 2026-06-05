@@ -1,4 +1,4 @@
-import "../pages/style/register.css";
+import "../pages/style/auth.css";
 import {Link, useNavigate} from "react-router-dom"
 import {useState} from "react"
 import api from "../services/api";
@@ -41,59 +41,80 @@ const handleSubmit = async (e) => {
     alert("Registration Failed");
   }
 };
-  return (
-    <div className="register-container">
+ return (
+  <section className="auth-container">
+    <div className="auth-card">
+      <h1 className="auth-title">
+        Create Account
+      </h1>
 
-      <form className="register-form" onSubmit={handleSubmit}>
+      <p className="auth-subtitle">
+        Register to access Application.
+      </p>
 
-        <h2>Register</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="input-group">
+          <label>Full Name</label>
 
-        <input
-  type="text"
-  name="name"
-  placeholder="Full Name"
-  value={formData.name}
-  onChange={handleChange}
-/>
+          <input
+            type="text"
+            name="name"
+            placeholder="John Doe"
+            value={formData.name}
+            onChange={handleChange}
+          />
+        </div>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-        />
+        <div className="input-group">
+          <label>Email</label>
 
-        <input
-          type="text"
-          name="address"
-          placeholder="Address"
-          value={formData.address}
-          onChange={handleChange}
-        />
+          <input
+            type="email"
+            name="email"
+            placeholder="you@example.com"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </div>
 
-        <input
-  type="password"
-  name="password"
-  placeholder="Enter Password"
-  value={formData.password}
-  onChange={handleChange}
-/>
+        <div className="input-group">
+          <label>Address</label>
 
-        <button type="submit">
+          <input
+            type="text"
+            name="address"
+            placeholder="Enter Address"
+            value={formData.address}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="input-group">
+          <label>Password</label>
+
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter Password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+        </div>
+
+        <button type="submit" className="auth-btn">
           Register
         </button>
-        <p>
-  Already have an account?
-  <Link to="/">
-    Login
-  </Link>
-</p>
-
       </form>
 
+      <p className="auth-footer">
+        Already have an account?{" "}
+        <Link to="/">
+          Login
+        </Link>
+      </p>
     </div>
-  );
+  </section>
+);
 }
 
 export default Register;

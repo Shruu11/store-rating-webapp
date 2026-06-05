@@ -12,7 +12,10 @@ import UserDashboard from "../user/UserDashboard";
 import OwnerDashboard from "../owner/OwnerDashboard";
 
 import ProtectedRoute from "../components/ProtectedRoute";
+import UpdatePassword from "../pages/UpdatePassword";
 
+import CreateUser from "../admin/CreateUser";
+import UserDetails from "../admin/UserDetails";
 function AppRoutes({ theme, setTheme }) {
   return (
     <BrowserRouter>
@@ -76,6 +79,18 @@ function AppRoutes({ theme, setTheme }) {
   }
 />
 
+<Route
+  path="/update-password"
+  element={<UpdatePassword />}
+/>
+<Route
+  path="/admin/create-user"
+  element={<CreateUser />}
+/>
+<Route
+  path="/admin/users/:id"
+  element={<UserDetails />}
+/>
       </Routes>
     </BrowserRouter>
   );
