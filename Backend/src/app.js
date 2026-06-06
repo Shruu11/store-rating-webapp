@@ -16,10 +16,13 @@ app.use(express.urlencoded({ extended: true }));
 //app.use(cookieParser());
 
 app.use(
- cors({
-   origin: "http://localhost:5173",
-   credentials: true,
- })
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://shruu11.github.io",
+    ],
+    credentials: true,
+  })
 );
 
 // Health Check Route
