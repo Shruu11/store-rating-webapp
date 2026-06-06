@@ -18,8 +18,8 @@ import CreateUser from "../admin/CreateUser";
 import UserDetails from "../admin/UserDetails";
 function AppRoutes({ theme, setTheme }) {
   return (
-    <BrowserRouter>
-      <Routes>
+    <BrowserRouter basename="/store-rating-webapp">
+      <Routes> 
 
         <Route path="/" element={<Login />} />
 
