@@ -2,14 +2,14 @@ Store Rating System
 
 A full-stack web application that allows users to rate stores, store owners to view ratings for their stores, and administrators to manage users and stores.
 
-Features
-Authentication & Authorization
+**Features
+Authentication & Authorization**
 User Registration
 User Login
 JWT Authentication
 Role-Based Access Control
 Protected Routes
-User Features
+**User Features**
 Browse all stores
 Search stores
 Submit ratings
@@ -19,7 +19,7 @@ Store Owner Features
 View stores owned by them
 View ratings received
 Monitor store performance
-Admin Features
+**Admin Features**
 Dashboard with system statistics
 Add, Edit, and Delete Stores
 Manage Users
